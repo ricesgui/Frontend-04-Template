@@ -3,6 +3,8 @@
 
 ## async异步编程
 
-callback
-Promise
-async/await
+1. callback
+2. Promise
+3. async/await
+
+4. generator  yield 模拟async/await
