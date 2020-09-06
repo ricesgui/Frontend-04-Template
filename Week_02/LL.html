@@ -5,6 +5,7 @@
 </html>
 
 <script>
+  // 正则表达式匹配 分别表示数字、空格、换行符、*/+- 运算符
   var regExp = /([0-9\.]+)|([ \t]+)|([\r\n]+)|(\*)|(\/)|(\+)|(\-)/g;
 
   var dictionary = ['Number', 'Whitespace', 'LineTerminator', '*', '/', '+', '-'];
@@ -35,6 +36,9 @@
       yield token;
       // console.log(result);
     }
+    yield {
+      type: 'EOF'
+    }
   }
   // 正则表达式
   // tokenize('1024 + 10 * 25');
@@ -43,5 +47,6 @@
   for (let token of tokenize('1024 + 10 * 25')) {
     console.log(token);
   }
+
 </script>
 

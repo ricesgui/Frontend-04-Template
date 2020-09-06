@@ -97,7 +97,7 @@
       if (table[y * 100 + x]) {
         return;
       }
-      await sleep(30);
+      // await sleep(30);
       container.children[y * 100 + x].style.backgroundColor = 'lightgreen';
       table[y * 100 + x] = pre;
       // queue.push([x, y]);
