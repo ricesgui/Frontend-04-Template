@@ -57,12 +57,56 @@ String 由字符组成，字符有ASCLL值，用编码存于字节中
 编写一段 JS 的函数，把一个 string 它代表的字节给它转换出来，用 UTF8 对 string 进行遍码。
 
 function UTF8_Encoding(string) {
-
+  let utf8Arr = [];
+  for (let c of string) {
+    let codeValue = c.charCodeAt(0);
+    console.log(c, codeValue);
+    if (codeValue >= 0x00 && codeValue <= 0x7f) {
+      utf8Arr.push(codeValue);
+    } else if (codeValue >= 0x80 && codeValue <= 0x7ff) {
+      utf8Arr.push((192 | (31 & (codeValue >> 6))));
+      utf8Arr.push((128 | (63 & codeValue)));
+    } else if (codeValue >= 0x10000 && codeValue <= 0x10ffff) {
+      utf8Arr.push((240 | (7 & (codeValue >> 18))));
+      utf8Arr.push((128 | (63 & (codeValue >> 12))));
+      utf8Arr.push((128 | (63 & (codeValue >> 6))));
+      utf8Arr.push((128 | (63 & codeValue)));
+    }
+  }
+  console.log(utf8Arr);
+  const binaryArr = [];
+  for (let a of utf8Arr) {
+    binaryArr.push(a.toString(2));
+    console.log(a);
+  }
+  return binaryArr;
 }
+console.log(UTF8_Encoding('前端进阶训练营'));
 
 
 ## 练习10 
 练习：用 JavaScript 去设计狗咬人的代码
+
+class Human {
+  constructor(name, animal) {
+    this.name = name;
+    this.animal = animal;
+  }
+  hurt() {
+    console.log('A people named ' + this.name + ' was hurted by ' + this.animal);
+  }
+}
+
+class Animal {
+  constructor(way) {
+    this.way = way;
+  }
+  bite(name) {
+    let human = new Human(name, this.way);
+    human.hurt(this.way);
+  }
+}
+new Animal('a dog').bite('xiao ming');
 
 ## 练习11
 作业：找出 JavaScript 标准里面所有具有特殊行为的对象
