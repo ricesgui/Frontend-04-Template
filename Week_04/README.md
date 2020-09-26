@@ -17,13 +17,18 @@
 式子： (1 + 2) * 3
 思考：括号应该只能括加减表达式
 
-<BracketExpression>::=<Number>|<AddtiveExpression>"("<BracketExpression>")"
+<BracketExpression>::=<Number>|"("<AddtiveExpression>")"<BracketExpression>
 
 <MultiplicativeExpression>::=<BracketExpression>|
   <MultiplicativeExpression>"*"<BracketExpression>|<MultiplicativeExpression>"/"<BracketExpression>|
 <AddtiveExpression>::=<MultiplicativeExpression>|
   <AddtiveExpression>"+"<MultiplicativeExpression>|
   <AddtiveExpression>"-"<MultiplicativeExpression>|
+
+  ## 优秀作业
+
+<BracketExpression>::=<Number>|"("<AddtiveExpression>")"|
+
 
 ## 练习4
 常见的几种分类
