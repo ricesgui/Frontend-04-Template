@@ -2,7 +2,7 @@
 
 var http = require('http');
 
-http.createServer((request, response) => {
+const server = http.createServer((request, response) => {
   let body = [];
   request.on('error', (err) => {
     console.log(err);
@@ -18,3 +18,4 @@ http.createServer((request, response) => {
 
 console.log('server started');
 
+module.exports.server = server;

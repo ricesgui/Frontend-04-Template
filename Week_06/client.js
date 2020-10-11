@@ -1,4 +1,5 @@
 const net = require('net');
+const parser = require('../Week_07/parse.js');
 
 class Request{
   constructor(options) {
@@ -41,7 +42,7 @@ class Request{
       });
       connection.on('error', (err) => {
         reject(err);
-        connection.end();        
+        connection.end();
       });
     });
   }
