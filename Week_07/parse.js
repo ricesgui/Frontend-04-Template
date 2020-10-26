@@ -1,6 +1,11 @@
 const css = require('css');
 
+const EOF = Symbol('EOF');
+
+const layout = require('../Week_08/layout');
+
 let currentToken = null;
+
 let currentAttribute = null;
 
 let stack = [{type: 'document', children: []}];
@@ -175,8 +180,6 @@ function emit(token) {
     currentTextNode.content += token.content;
   }
 }
-
-const EOF = Symbol('EOF');
 
 function data(c) {
   if (c == '<') {
