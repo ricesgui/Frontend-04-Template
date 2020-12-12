@@ -20,7 +20,7 @@ export class Listener {
       let { button } = event
       button += 1
       let context = Object.create(null)
-      // console.log('00', `mouse${1 << button}`, button);
+      // console.log('00', `mouse${1 <<  button}`, button);
       contexts.set(`mouse${1 << button}`, context)
       recognizer.start(event, context);
       let mousemove = e => {
