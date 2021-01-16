@@ -123,3 +123,33 @@ function findB3(c) {
 }
 console.log(findStr('abababx'));
     </script>
+## 练习3
+    <script>
+      function findStr3(str) {
+        let pattern = 'abcdabef';
+        let step = 0;
+        let table = new Array(pattern.length).fill(0);
+        let j = 0;
+        for (let i = 1; i < pattern.length; i++) {
+          if (pattern[i] === pattern[j]) {
+            j++;
+            table[i+1] = j;
+          } else {
+            j = table[j];
+          }
+        }
+        let m = 0;
+        while(m < str.length) {
+          if (str[m] === pattern.length) {
+            step++;
+            if (step === pattern.length) {
+              return true;
+            }
+            m++;
+          } else {
+            step = table[step];
+          }
+        }
+        return false;
+      }
+    </script>
